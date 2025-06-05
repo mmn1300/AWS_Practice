@@ -60,7 +60,7 @@ public class FileDownloadTest extends BoardRestControllerUnitTestSupport {
             targetFile.createNewFile();
         }
 
-        Path path = Paths.get(uploadDir + '\\' + tempName);
+        Path path = Paths.get(uploadDir + '/' + tempName);
         byte[] expectedBytes = Files.readAllBytes(path);
         
         Resource resource = new FileSystemResource(path);
