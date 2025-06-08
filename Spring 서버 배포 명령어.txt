@@ -1,0 +1,64 @@
+[ Spring 서버 배포 명령어 ]
+
+
+sudo dnf update -y	(Amazon Linux)
+sudo apt update 		(Ubuntu, Debian)
+(관리자 권한으로 APT 패키지 관리자가 패키지 목록을 최신 상태로 갱신)
+
+sudo dnf install java-17-amazon-corretto -y	(Amazon Linux)
+sudo dnf remove java-17-amazon-corretto -y
+sudo dnf install java-17-amazon-corretto-devel -y
+
+sudo apt install openjdk-17-jdk -y 		(Ubuntu, Debian)
+(OpenJDK 17 버전 개발 도구 패키지를 설치)
+
+java -version
+(JDK가 잘 설치되었는지 확인하기)
+
+sudo dnf install git 	(Amazon Linux)
+(깃 설치)
+
+git clone https://github.com/mmn1300/AWS_Practice.git
+(mmn1300의 AWS_Practice 레포지토리의 소스코드를 복제하여 다운로드)
+
+cd AWS_Practice
+(다운받은 소스코드가 있는 곳으로 디렉토리 이동)
+
+cd ./src/main/resources/
+nano application.yml
+nano application-prov.yml 		(nano 저장 및 닫기 : Ctrl+X -> Y -> Enter)
+(application.yml 파일 직접 만들어 추가하기)
+
+cd ../../../
+(원래 작업 디렉토리로 되돌아오기)
+
+chmod +x ./gradlew
+(gradlew 실행 권한 부여)
+
+readlink -f $(which java)
+(현재 설치된 Java 경로 확인)
+
+nano ~/.bash_profile 로 파일 열고 최 하단에 아래 명령어 추가
+
+export JAVA_HOME=설치된 Java 경로에서 맨 끝 /bin/java를 제외한 부분
+export PATH=$JAVA_HOME/bin:$PATH
+(환경 변수 설정)
+
+source ~/.bash_profile
+(변경 사항 적용)
+
+echo $JAVA_HOME
+(환경 변수 설정 확인)
+
+./gradlew clean build
+(Spring 서버 클린 후 빌드)
+
+cd ./build/libs
+(빌드된 서버 파일이 있는 디렉토리로 이동)
+(*SNAPSHOT.jar 형식의 파일을 사용할 예정)
+
+ls
+(빌드된 서버 파일이 존재하는지 확인)
+
+sudo java -jar 레포지토리이름-버전-SNAPSHOT.jar
+(관리자 권한으로 Spring 서버 배포)
