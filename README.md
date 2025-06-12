@@ -26,3 +26,7 @@
 ![ALB를 통한 부하 분산](https://github.com/mmn1300/AWS_Practice/blob/main/deploy_test_img/aws%20%EC%8B%A4%EC%8A%B5%202025-06-08.png)
 
 ---
+
++ 2025-06-10
+  + VPC 내부 서브넷 분리 및 Bestion host를 통한 접근 아키텍쳐 구성
+![서브넷 분리](https://github.com/mmn1300/AWS_Practice/blob/main/deploy_test_img/aws%20%EC%8B%A4%EC%8A%B5%202025-06-10.png)
